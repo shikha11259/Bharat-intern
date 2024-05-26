@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, intitial-scale=1.0">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="stylesw.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="enter city name" spellcheck="false">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="error">
+                <p>Invalid city name</p>
+            </div>
+            <div class="weather">
+                <img src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2024-05-25 at 21.17.06_c125ef87.jpg" class="weather-icon">
+                <h1 class="temp">22°c</h1>
+                <h2 class="city">New York</h2>
+                <div class="details">
+                    <div class="col">
+                        <img src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\fog.png">
+                        <div>
+                            <p class="humidity">50%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <img src=" c:\Users\shikh\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2024-05-25 at 21.21.47_ae830f71.jpg"></img>
+                        <div>
+                            <p class="wind">15 km/h</p>
+                            <p>Wind Speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const apikey="b011c6f167c884088d396e6c829484e4";
+            const apiurl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+            const searchBox=document.querySelector(".search input");
+            const searchBtn =document.querySelector(".search button");
+            const weatherIcon =document.querySelector(".weather-icon");
+
+
+            async function checkweather(city){
+                const response=await fetch(apiurl + city+ `&appid=${apikey}`);
+               
+
+                if(response.status== 404){
+                    document.querySelector(".error").style.display ="block";
+                    document.querySelector(".weather").style.display ="none";
+                }
+                else{
+
+                
+                var data = await response.json();
+                
+                document.querySelector(".city").innerHTML = data.name;
+                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) +" °c";
+                document.querySelector(".humidity").innerHTML = data.main.humidity +"%";
+                document.querySelector(".wind").innerHTML = data.wind.speed+"km/h";
+
+                if(data.weather[0].main == "clouds"){
+                     weatherIcon.src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2024-05-25 at 21.17.06_c125ef87.jpg";
+
+                }
+                else if(data.weather[0].main == "clear"){
+                     weatherIcon.src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\download.png";
+                }
+                else if(data.weather[0].main == "rain"){
+                     weatherIcon.src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2024-05-25 at 21.17.06_c125ef87.jpg";
+                }
+                else if(data.weather[0].main == "drizzle"){
+                     weatherIcon.src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2024-05-25 at 21.17.06_c125ef87.jpg";
+                }
+                else if(data.weather[0].main == "Mist"){
+                     weatherIcon.src="c:\Users\shikh\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2024-05-25 at 21.17.07_1bad39ab.jpg";
+                }
+
+                document.querySelector(".weather").style.display ="block";
+                document.querySelector(".error").style.display ="none";
+                }
+            }
+                searchBtn.addEventlistener("click",()=>{
+                checkweather(searchBOX.value);
+                })
+
+            
+        </script>
+    </body>
+</html>

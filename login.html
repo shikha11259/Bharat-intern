@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>login page</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>
+            body{
+                font-family:Arial,helvetica,courier;
+                background-image:url("https://wallpapers.com/images/featured/pastel-gradient-background-etu0z7lbeebg6mlf.jpg") ;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                border:2px solid #dbdbdb;
+                margin:0px 400px 0px 400px;
+                border-radius:10px;
+                /*https://wallpapers.com/images/featured/pastel-gradient-background-etu0z7lbeebg6mlf.jpg*/
+            }
+            *{box-sizing:border-box;}
+            div{ 
+                width:100%;
+                padding:10px 20px;
+                margin:15px 25px;
+                display:inline-block;
+            }
+            .container{
+                margin:auto;
+                text-align:center;
+            }
+            button{
+                padding:14px 20px;
+                margin:20pxpx 0px;
+                background-color:green;
+                width:100%;
+            }
+            button:hover{
+                opacity:0.8;
+                width:100%;
+                background-color:white;
+            }
+            .cancelbtn{
+                background-color: red;
+                color:white;
+            }
+            .psw{
+                width:50%;
+                float:right;
+            }
+            text{
+                width:60%;
+                padding: 15px;
+            }
+        </style>
+    </head>
+<body>
+    <form action="/action_page.php" method="post">
+        
+        <div class="container">
+            <img src="https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg" style=height:200px; alt="avatar"><br>
+            <h2><center>Login</center></h2>
+            <hr>
+            <label for="uname"><b>Username</b></label><br><input type="text" placeholder="Enter Username" name="uname" required><br>
+             <label for="psw"><b>Password</b></label><br><input type="text" placeholder="Enter Password" name="psw" required><br>
+             
+             <label><input type="checkbox" checked="checked" name="remember">Remember Me</label><br>
+             <button type="submit">Login</button><br>
+        </div>
+            <div class="boat">
+                <button type="button" class="signupbutton" style="background-color:red; width:30%;"><a href:"https://www.onlinegdb.com/edit/B6MRNXAb4">Sign Up</a></button>
+                <span class="psw">Forget<a href="#">password?</a></span>
+        </div>
+    </form>
+</body>
+</html>
