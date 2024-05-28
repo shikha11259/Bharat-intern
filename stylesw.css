@@ -70,10 +70,7 @@ body{
 .col{
     display: flex;
     align-items: center;
-    text-align: left;
-    
-
-    
+    text-align: left;    
 }
 .col img{
     width: 40px;
@@ -83,7 +80,7 @@ body{
     font-size: 28px;
     margin-top: -6px;
 }
-/*.weather{
+.weather{
     display: none;
 }
 .error{
